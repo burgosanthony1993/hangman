@@ -1,4 +1,4 @@
-var ENGLISH_WORDS = [
+export const ENGLISH_WORDS = [
   "their",
   "would",
   "about",
