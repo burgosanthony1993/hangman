@@ -52,6 +52,11 @@ class Hangman extends Component {
    // this.handleGuess = this.handleGuess.bind(this);
   }
 
+    //A function to reset the button by refreshing the page
+    resetButton() {
+      window.location.reload()
+    }
+
   /** guessedWord: show current-state of word:
     if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
@@ -76,6 +81,8 @@ class Hangman extends Component {
     ));
   }
 
+
+
   /** render: render game */
   //The render is in a ternary Operator
   //i.e. (condition? true : false)
@@ -88,7 +95,10 @@ class Hangman extends Component {
         <div>                
         <p >The number of wrong guesses are: {this.state.nWrong}</p>
         <p className='Hangman-word'>{this.guessedWord()}</p>
-        <p className='Hangman-btns'>{this.generateButtons()}</p></div> :
+        <p className='Hangman-btns'>{this.generateButtons()}</p>
+        {this.guessedWord().join("") === this.state.answer && <p>You Win!</p>}
+        <button id="reset" onClick={this.resetButton}>Reset Button</button>
+        </div> :
         <h2>You Lose. The correct answer was {this.state.answer}</h2>
       }
       </div>
